@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMate Pro - AI-Powered Coding Education</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- App Container -->
+    <div id="app">
+        <!-- Navigation -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <span class="logo-icon">🤖</span>
+                    <span class="logo-text">CodeMate Pro</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#" class="nav-link" data-route="dashboard">Dashboard</a></li>
+                    <li><a href="#" class="nav-link" data-route="languages">Languages</a></li>
+                    <li><a href="#" class="nav-link" data-route="editor">Editor</a></li>
+                    <li><a href="#" class="nav-link" data-route="challenges">Challenges</a></li>
+                    <li><a href="#" class="nav-link" data-route="profile">Profile</a></li>
+                    <li><button class="btn btn-sm" id="logout-btn">Logout</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Login Page -->
+        <section id="login-page" class="page active">
+            <div class="login-container">
+                <div class="login-card">
+                    <div class="login-header">
+                        <div class="logo-large">
+                            <span class="logo-icon">🤖</span>
+                            <h1>CodeMate Pro</h1>
+                        </div>
+                        <p class="login-subtitle">Master Programming with AI-Powered Learning</p>
+                    </div>
+                    
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login">Login</button>
+                        <button class="auth-tab" data-tab="signup">Sign Up</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label class="form-label" for="login-email">Email</label>
+                            <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="login-password">Password</label>
+                            <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full-width">Sign In</button>
+                        <div class="auth-divider">or</div>
+                        <button type="button" class="btn btn-outline btn-full-width" id="google-login">
+                            <span>🚀</span> Continue with Demo Account
+                        </button>
+                    </form>
+
+                    <!-- Signup Form -->
+                    <form id="signup-form" class="auth-form hidden">
+                        <div class="form-group">
+                            <label class="form-label" for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="signup-email">Email</label>
+                            <input type="email" id="signup-email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="signup-password">Password</label>
+                            <input type="password" id="signup-password" class="form-control" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="signup-confirm">Confirm Password</label>
+                            <input type="password" id="signup-confirm" class="form-control" placeholder="Confirm your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full-width">Create Account</button>
+                    </form>
+
+                    <div class="demo-credentials">
+                        <h4>Demo Credentials</h4>
+                        <p>Email: <strong>alex@example.com</strong></p>
+                        <p>Password: <strong>password123</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section id="dashboard-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Dashboard</h1>
+                    <div class="user-greeting">
+                        <span class="greeting-text">Welcome back, <span id="user-name">Alex</span>! 👋</span>
+                        <div class="streak-indicator">🔥 <span id="streak-count">15</span> day streak</div>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-info">
+                            <h3 id="xp-count">2,847</h3>
+                            <p>Total XP</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-info">
+                            <h3>Level 12</h3>
+                            <p>Code Ninja</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <h3>87.3%</h3>
+                            <p>Accuracy</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <div class="stat-info">
+                            <h3>47.5h</h3>
+                            <p>Coding Time</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Content -->
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Learning Progress</h3>
+                        <div class="progress-overview">
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="language-name">🐍 Python</span>
+                                    <span class="progress-percent">75%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="language-name">⚡ JavaScript</span>
+                                    <span class="progress-percent">45%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="language-name">☕ Java</span>
+                                    <span class="progress-percent">60%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Weekly Activity</h3>
+                        <div class="chart-container" style="position: relative; height: 200px;">
+                            <canvas id="activityChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Achievement Badges</h3>
+                        <div class="badges-grid">
+                            <div class="badge earned" title="7-Day Streak">
+                                <span class="badge-icon">🔥</span>
+                                <span class="badge-name">Streak Master</span>
+                            </div>
+                            <div class="badge earned" title="100 Problems Solved">
+                                <span class="badge-icon">💯</span>
+                                <span class="badge-name">Century Club</span>
+                            </div>
+                            <div class="badge" title="Python Expert">
+                                <span class="badge-icon">🐍</span>
+                                <span class="badge-name">Python Pro</span>
+                            </div>
+                            <div class="badge earned" title="Night Coder">
+                                <span class="badge-icon">🌙</span>
+                                <span class="badge-name">Night Owl</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Today's Challenge</h3>
+                        <div class="daily-challenge">
+                            <div class="challenge-info">
+                                <h4>Two Sum Problem</h4>
+                                <div class="challenge-meta">
+                                    <span class="difficulty easy">Easy</span>
+                                    <span class="xp-reward">+50 XP</span>
+                                </div>
+                                <p>Find two numbers in an array that add up to a target sum.</p>
+                            </div>
+                            <button class="btn btn-primary challenge-start">Start Challenge</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Languages Page -->
+        <section id="languages-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Programming Languages</h1>
+                    <p class="page-subtitle">Choose your learning path and master new programming languages</p>
+                </div>
+
+                <div class="languages-grid">
+                    <div class="language-card" data-language="python">
+                        <div class="language-header">
+                            <div class="language-icon">🐍</div>
+                            <div class="language-info">
+                                <h3>Python Programming</h3>
+                                <p>Learn Python from basics to advanced topics</p>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="progress-text">Module 3 of 7 - 75% Complete</span>
+                        </div>
+                        <div class="language-stats">
+                            <div class="stat">
+                                <span class="stat-label">Modules:</span>
+                                <span class="stat-value">3/7 Complete</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Exercises:</span>
+                                <span class="stat-value">12 Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Time:</span>
+                                <span class="stat-value">8.5 hours</span>
+                            </div>
+                        </div>
+                        <div class="language-actions">
+                            <button class="btn btn-primary language-continue">Continue Learning</button>
+                            <button class="btn btn-outline language-overview">View Modules</button>
+                        </div>
+                    </div>
+
+                    <div class="language-card" data-language="javascript">
+                        <div class="language-header">
+                            <div class="language-icon">⚡</div>
+                            <div class="language-info">
+                                <h3>JavaScript Programming</h3>
+                                <p>Master JavaScript for web development</p>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="progress-text">Module 2 of 5 - 45% Complete</span>
+                        </div>
+                        <div class="language-stats">
+                            <div class="stat">
+                                <span class="stat-label">Modules:</span>
+                                <span class="stat-value">1/5 Complete</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Exercises:</span>
+                                <span class="stat-value">4 Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Time:</span>
+                                <span class="stat-value">3.2 hours</span>
+                            </div>
+                        </div>
+                        <div class="language-actions">
+                            <button class="btn btn-primary language-continue">Continue Learning</button>
+                            <button class="btn btn-outline language-overview">View Modules</button>
+                        </div>
+                    </div>
+
+                    <div class="language-card" data-language="java">
+                        <div class="language-header">
+                            <div class="language-icon">☕</div>
+                            <div class="language-info">
+                                <h3>Java Programming</h3>
+                                <p>Learn Java for enterprise development</p>
+                            </div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="progress-text">Not Started</span>
+                        </div>
+                        <div class="language-stats">
+                            <div class="stat">
+                                <span class="stat-label">Modules:</span>
+                                <span class="stat-value">0/7 Complete</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Exercises:</span>
+                                <span class="stat-value">0 Completed</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-label">Time:</span>
+                                <span class="stat-value">0 hours</span>
+                            </div>
+                        </div>
+                        <div class="language-actions">
+                            <button class="btn btn-primary language-continue">Start Learning</button>
+                            <button class="btn btn-outline language-overview">View Modules</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path Page -->
+        <section id="learning-path-page" class="page">
+            <div class="container">
+                <div class="path-header">
+                    <button class="btn btn-outline back-btn" id="back-to-languages">← Back to Languages</button>
+                    <div class="path-info">
+                        <div class="path-icon" id="current-language-icon">🐍</div>
+                        <div class="path-details">
+                            <h1 id="current-language-title">Python Programming</h1>
+                            <p id="current-language-description">Learn Python from basics to advanced topics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modules-grid" id="modules-container">
+                    <!-- Modules will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Module Content Page -->
+        <section id="module-page" class="page">
+            <div class="container">
+                <div class="module-header">
+                    <button class="btn btn-outline back-btn" id="back-to-modules">← Back to Modules</button>
+                    <div class="module-info">
+                        <h1 id="current-module-title">Python Basics</h1>
+                        <div class="module-meta">
+                            <span class="difficulty" id="current-module-difficulty">Beginner</span>
+                            <span class="time-estimate" id="current-module-time">2 hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="module-content">
+                    <div class="content-sidebar">
+                        <div class="lesson-list" id="lesson-list">
+                            <!-- Lessons will be dynamically loaded -->
+                        </div>
+                    </div>
+
+                    <div class="content-main">
+                        <div class="lesson-content" id="lesson-content">
+                            <!-- Current lesson content -->
+                        </div>
+
+                        <div class="lesson-navigation">
+                            <button class="btn btn-outline" id="prev-lesson">← Previous</button>
+                            <button class="btn btn-primary" id="next-lesson">Next →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Editor Page -->
+        <section id="editor-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Code Editor</h1>
+                    <div class="editor-controls">
+                        <select class="language-selector" id="editor-language">
+                            <option value="python">Python</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="java">Java</option>
+                        </select>
+                        <button class="btn btn-primary" id="run-code">▶ Run Code</button>
+                    </div>
+                </div>
+
+                <div class="editor-layout">
+                    <div class="editor-pane">
+                        <div class="editor-header">
+                            <h3>Code Editor</h3>
+                        </div>
+                        <textarea id="code-editor" class="code-textarea" placeholder="// Start coding here...">print("Hello, CodeMate Pro!")
+name = "Python Developer"
+print(f"Welcome to the world of {name}!")
+
+# Try writing your own code below:</textarea>
+                    </div>
+
+                    <div class="output-pane">
+                        <div class="output-header">
+                            <h3>Output</h3>
+                            <button class="btn btn-sm" id="clear-output">Clear</button>
+                        </div>
+                        <div id="code-output" class="code-output">
+                            <div class="output-line">Ready to run your code...</div>
+                        </div>
+
+                        <div class="ai-assistance">
+                            <h4>🤖 AI Assistant</h4>
+                            <div class="ai-hints" id="ai-hints">
+                                <div class="hint">💡 Try using f-strings for better string formatting</div>
+                                <div class="hint">💡 Remember to use proper indentation in Python</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Challenges Page -->
+        <section id="challenges-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Coding Challenges</h1>
+                    <p class="page-subtitle">Test your skills with daily challenges and competitions</p>
+                </div>
+
+                <div class="challenges-layout">
+                    <div class="challenge-main">
+                        <div class="featured-challenge">
+                            <div class="challenge-header">
+                                <h2>Today's Featured Challenge</h2>
+                                <div class="challenge-timer">
+                                    <span class="timer-label">Time Remaining:</span>
+                                    <span class="timer-value" id="challenge-timer">23:45:12</span>
+                                </div>
+                            </div>
+
+                            <div class="challenge-card featured">
+                                <div class="challenge-info">
+                                    <h3>Two Sum Problem</h3>
+                                    <div class="challenge-meta">
+                                        <span class="difficulty easy">Easy</span>
+                                        <span class="category">🎯 Algorithms</span>
+                                        <span class="xp-reward">+50 XP</span>
+                                    </div>
+                                    <p>Given an array of integers and a target sum, return indices of two numbers that add up to the target.</p>
+                                </div>
+                                <button class="btn btn-primary challenge-start">Start Challenge</button>
+                            </div>
+                        </div>
+
+                        <div class="challenge-list">
+                            <h3>More Challenges</h3>
+                            <div class="challenges-grid">
+                                <div class="challenge-card">
+                                    <h4>Reverse String</h4>
+                                    <div class="challenge-meta">
+                                        <span class="difficulty easy">Easy</span>
+                                        <span class="xp-reward">+25 XP</span>
+                                    </div>
+                                    <p>Write a function to reverse a string.</p>
+                                    <button class="btn btn-outline challenge-start">Solve</button>
+                                </div>
+
+                                <div class="challenge-card">
+                                    <h4>Fibonacci Sequence</h4>
+                                    <div class="challenge-meta">
+                                        <span class="difficulty medium">Medium</span>
+                                        <span class="xp-reward">+75 XP</span>
+                                    </div>
+                                    <p>Generate the nth Fibonacci number efficiently.</p>
+                                    <button class="btn btn-outline challenge-start">Solve</button>
+                                </div>
+
+                                <div class="challenge-card">
+                                    <h4>Binary Tree Traversal</h4>
+                                    <div class="challenge-meta">
+                                        <span class="difficulty hard">Hard</span>
+                                        <span class="xp-reward">+150 XP</span>
+                                    </div>
+                                    <p>Implement in-order traversal of a binary tree.</p>
+                                    <button class="btn btn-outline challenge-start">Solve</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="challenge-sidebar">
+                        <div class="leaderboard-card">
+                            <h3>🏆 Leaderboard</h3>
+                            <div class="leaderboard-list">
+                                <div class="leaderboard-item">
+                                    <span class="rank gold">1</span>
+                                    <span class="avatar">🥷</span>
+                                    <span class="name">CodeNinja</span>
+                                    <span class="score">5,420</span>
+                                </div>
+                                <div class="leaderboard-item">
+                                    <span class="rank silver">2</span>
+                                    <span class="avatar">🐍</span>
+                                    <span class="name">PyMaster</span>
+                                    <span class="score">4,890</span>
+                                </div>
+                                <div class="leaderboard-item current-user">
+                                    <span class="rank">6</span>
+                                    <span class="avatar">🚀</span>
+                                    <span class="name">You (Alex)</span>
+                                    <span class="score">2,847</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-card">
+                            <h3>📊 Your Stats</h3>
+                            <div class="challenge-stats">
+                                <div class="stat-item">
+                                    <span class="stat-number">24</span>
+                                    <span class="stat-label">Solved</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">87%</span>
+                                    <span class="stat-label">Success Rate</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-number">15</span>
+                                    <span class="stat-label">Streak</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section id="profile-page" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="page-title">Profile</h1>
+                    <p class="page-subtitle">Manage your account and learning preferences</p>
+                </div>
+
+                <div class="profile-layout">
+                    <div class="profile-main">
+                        <div class="profile-card">
+                            <div class="profile-avatar">
+                                <div class="avatar-display">🚀</div>
+                                <button class="btn btn-sm avatar-change">Change Avatar</button>
+                            </div>
+                            <div class="profile-info">
+                                <h2 id="profile-name">Alex Chen</h2>
+                                <p id="profile-email">alex@example.com</p>
+                                <div class="profile-stats">
+                                    <div class="profile-stat">
+                                        <span class="stat-value">Level 12</span>
+                                        <span class="stat-label">Current Level</span>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <span class="stat-value">2,847</span>
+                                        <span class="stat-label">Total XP</span>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <span class="stat-value">15</span>
+                                        <span class="stat-label">Day Streak</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>Settings</h3>
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label class="form-label">Theme Preference</label>
+                                    <select class="form-control">
+                                        <option value="dark">Dark Mode</option>
+                                        <option value="light">Light Mode</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Notifications</label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        Daily challenges
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" checked>
+                                        <span class="checkmark"></span>
+                                        Progress updates
+                                    </label>
+                                </div>
+                                <button class="btn btn-primary">Save Settings</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-sidebar">
+                        <div class="achievements-card">
+                            <h3>🏆 Recent Achievements</h3>
+                            <div class="achievement-list">
+                                <div class="achievement-item earned">
+                                    <span class="achievement-icon">🔥</span>
+                                    <div class="achievement-info">
+                                        <h4>15-Day Streak</h4>
+                                        <p>Coded for 15 consecutive days</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item earned">
+                                    <span class="achievement-icon">💯</span>
+                                    <div class="achievement-info">
+                                        <h4>Century Club</h4>
+                                        <p>Solved 100+ problems</p>
+                                    </div>
+                                </div>
+                                <div class="achievement-item">
+                                    <span class="achievement-icon">🐍</span>
+                                    <div class="achievement-info">
+                                        <h4>Python Master</h4>
+                                        <p>Complete all Python modules</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modals -->
+    <div id="avatar-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Choose Your Avatar</h3>
+                <button class="close-modal" data-modal="avatar-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="avatar-options">
+                    <div class="avatar-option active" data-avatar="🚀">🚀</div>
+                    <div class="avatar-option" data-avatar="🤖">🤖</div>
+                    <div class="avatar-option" data-avatar="👨‍💻">👨‍💻</div>
+                    <div class="avatar-option" data-avatar="🐱‍💻">🐱‍💻</div>
+                    <div class="avatar-option" data-avatar="🦄">🦄</div>
+                    <div class="avatar-option" data-avatar="⚡">⚡</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline close-modal" data-modal="avatar-modal">Cancel</button>
+                <button class="btn btn-primary" id="save-avatar">Save Avatar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
